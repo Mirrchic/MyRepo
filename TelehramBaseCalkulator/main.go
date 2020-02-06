@@ -6,34 +6,25 @@ import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api"
 )
 
-//just making us easier to understanf the code
-var (
-	bot       *tgbotapi.BotAPI
-	err       error
-	updChan   tgbotapi.UpdatesChannel
-	update    tgbotapi.Update /
-	updConfig tgbotapi.UpdateConfig
-)
-
 func main() {
-	bot, err = tgbotapi.NewBotAPI("My awesome token")
-
+	var err error
+	bot, err := tgbotapi.NewBotAPI("1019630704:AAHmL-rjSKKw-xwjKKqRVfOjBGLoOzWmjQU")
 	if err != nil {
 		log.Panic("bot init error:", err)
 		return
 	}
-
-	updConfig.Timeout = 60
-	updConfig.Limit = 10 
-	updConfig.Offset = 0
-
-	updChan, err = bot.GetUpdatesChan(updConfig)
+	log.Printf("Authorized on account %s", bot.Self.UserName)
+	u := tgbotapi.NewUpdate(0)
+	u.Timeout = 60
+	u.Limit = 10
+	u.Offset = 0
+	updChan, err := bot.GetUpdatesChan(u)
 	if err != nil {
 		log.Panic("update error:", err)
 	}
 
 	for {
-		update = <-updChan
+		update := <-updChan
 		if update.Message.IsCommand() == true && update.Message.Command() != "Calculate" {
 			cmd := update.Message.Command()
 			if cmd == "help" {
