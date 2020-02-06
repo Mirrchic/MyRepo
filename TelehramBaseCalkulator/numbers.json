@@ -1,0 +1,14 @@
+{
+ "UserID": 123,
+ "Char": "*",
+ "NumbersCalk": [
+  {
+   "Base1": 2,
+   "Base2": 16,
+   "BaseRet": 16,
+   "Num1": "100",
+   "Num2": "FF",
+   "Requestcreated": "2020-02-06 03:01:26.384639741 +0200 EET m=+0.000059182"
+  }
+ ]
+}
